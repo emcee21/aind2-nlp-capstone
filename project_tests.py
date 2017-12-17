@@ -12,7 +12,8 @@ def _test_model(model, input_shape, output_sequence_length, french_vocab_size):
     assert model.input_shape == (None, *input_shape[1:]),\
         'Wrong input shape. Found input shape {} using parameter input_shape={}'.format(model.input_shape, input_shape)
 
-    assert model.output_shape == (None, output_sequence_length, french_vocab_size),\
+    print (model.output_shape)
+    assert model.output_shape == (None, output_sequence_length, french_vocab_size + 1),\
         'Wrong output shape. Found output shape {} using parameters output_sequence_length={} and french_vocab_size={}'\
             .format(model.output_shape, output_sequence_length, french_vocab_size)
 
@@ -94,7 +95,7 @@ def test_bd_model(bd_model):
 
 
 def test_model_final(model_final):
-    input_shape = (137861, 15)
+    input_shape = (137861, 21)
     output_sequence_length = 21
     english_vocab_size = 199
     french_vocab_size = 344
